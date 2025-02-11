@@ -5,7 +5,8 @@ import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import {DecentralizedCoin} from "src/DecStableCoin.sol";
 import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-import{OracleLib} from"./Library/OracleLib.sol";
+import {OracleLib} from "./Library/OracleLib.sol";
+
 contract DSCEngine is ReentrancyGuard {
     error DSEN__zero();
     error DSEN__MisMatchedLength();
@@ -15,7 +16,9 @@ contract DSCEngine is ReentrancyGuard {
     error DSEN__MintFailed();
     error DSEN__HealthFactorOk();
     error DSEN__HealthFactorNotImproved();
+
     using OracleLib for AggregatorV3Interface;
+
     mapping(address token => address priceFeed) private s_priceFeeds;
     mapping(address user => mapping(address token => uint256 amount)) private s_collateralDeposited;
     mapping(address user => uint256 amountMinted) private s_DSCMinted;
