@@ -197,7 +197,7 @@ contract DSCEngine is ReentrancyGuard {
         return (collateralAdjustedForThreshold * 1e18) / totalDscMinted;
     }
 
-    function getCalculateHealthFactor(uint256 totalDscMinted, uint256 collateralValue) public view returns (uint256) {
+    function getCalculateHealthFactor(uint256 totalDscMinted, uint256 collateralValue) public pure returns (uint256) {
         return _calculateHealthFactor(totalDscMinted, collateralValue);
     }
 

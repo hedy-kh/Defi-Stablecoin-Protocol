@@ -57,7 +57,7 @@ contract TestDscEngine is Test {
         assertEq(expectedUsd, actualUsd);
     }
 
-    function testGetTokenAmountFromUsd() public {
+    function testGetTokenAmountFromUsd() public view {
         uint256 usdAmount = 100 ether;
         uint256 expectedWeth = 0.05 ether;
         uint256 actualWeth = dsce.getTokenAmountFromUsd(weth, usdAmount);
@@ -149,7 +149,7 @@ contract TestDscEngine is Test {
         uint256 ExpectedReturn = (collateralExpected * 1e18) / totalDscMinted;
         uint256 RealHealthFactor = dsce.getCalculateHealthFactor(totalDscMinted, collateralValueInUsd);
         assertEq(ExpectedReturn, RealHealthFactor, "Health Factor calculation mismatch");
-        uint256 getHealthFactor = dsce.getHealthFactor(user);
+        //uint256 getHealthFactor = dsce.getHealthFactor(user);
         //assertEq(getHealthFactor,RealHealthFactor,"Health Factor mismatch");
         vm.stopPrank();
     }
@@ -157,7 +157,7 @@ contract TestDscEngine is Test {
     function testGetAccountCollateralValue() public {
         vm.startPrank(user);
         ERC20Mock(weth).approve(address(dsce), 10 ether);
-        address token = weth;
+        //address token = weth;
         uint256 amount = dsce.getCollateralDeposited(user, weth);
         //address[] public s_collateralTokens;
         dsce.addCollateralToken(weth);
